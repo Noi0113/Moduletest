@@ -1,6 +1,6 @@
 import streamlit as st
 import sqlite3
-import pandas as pd
+#import pandas as pd
 
 # データベース名
 db_name = 'test-monketsu.db'
