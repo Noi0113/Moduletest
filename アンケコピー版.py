@@ -6,7 +6,7 @@ import sqlite3
 def main():
     status_area = st.empty()
 #タイトル
-st.title('アンケート回答コピー版') 
+st.title('アンケート回答コピー版!') 
 # データベース接続の作成
 conn = sqlite3.connect('test-monketsu.db')
 c = conn.cursor()
