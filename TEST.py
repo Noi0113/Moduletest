@@ -1,6 +1,5 @@
 import streamlit as st
 import sqlite3
-from git import Repo
 
 # Streamlitアプリの作成
 def app():
@@ -41,19 +40,39 @@ def app():
     for row in rows:
         st.write(f"大会名: {row[0]}, 大会パスワード: {row[1]}")
 
-    
 
-    # Gitリポジトリのパスを指定
-    repo = Repo('/home/s2110524/Moduletest/.git')
+
+# Gitコマンドを実行
+try:
+    # Gitのユーザー情報を設定
+    subprocess.check_call(['git', 'config', '--global', 'user.email', 's2110524@u.tsukuba.ac.jp'])
+    subprocess.check_call(['git', 'config', '--global', 'user.name', 'KNo0113'])
 
     # 変更をステージング
-    repo.git.add('test-monketsu.db')
+    subprocess.check_call(['git', 'add', '--all'])
 
     # コミット
-    repo.git.commit('-m', 'Update database')
+    subprocess.check_call(['git', 'commit', '-m', 'Update database'])
 
-    # GitHubにプッシュ
-    repo.git.push('origin', 'main')
+    # リモートのmainブランチを最新状態にリセット
+    subprocess.check_call(['git', 'reset', '--hard', 'origin/main'])
+
+    # 変更を再度ステージング
+    subprocess.check_call(['git', 'add', 'test-monketsu.db'])
+
+    # リモートリポジトリの最新情報を取得
+    subprocess.check_call(['git', 'fetch', 'origin'])
+
+    # 変更をコミット
+    subprocess.check_call(['git', 'commit', '-m', 'Add SQLite database'])
+
+    # リモートリポジトリにプッシュ
+    subprocess.check_call(['git', 'push'])
+
+    print("データベースの変更がGit上に反映され、リモートリポジトリにプッシュされました。")
+except subprocess.CalledProcessError as e:
+    print("エラーが発生しました：", e)
+
 
     conn.close()
 # Streamlitアプリを実行
