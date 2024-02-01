@@ -7,7 +7,7 @@ st.title('DBデータ保持検証')
 db_name = 'test-monketsu.db'
 
 # 全てのデータを選択するSQL文
-select_all_sql = 'select * from tips'
+select_all_sql = 'select * from TestTable'
 
 # SQLiteデータベースに接続し、データを読み込む
 with sqlite3.connect(db_name) as conn:
