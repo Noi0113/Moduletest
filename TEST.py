@@ -5,7 +5,7 @@ from git import Repo
 
 # Streamlitアプリの作成
 def app():
-    st.title('データベース実験変更版！!!')
+    st.title('データベース実験変更版！')
     # データベース接続の作成
     conn = sqlite3.connect('test-monketsu.db')
     c = conn.cursor()
@@ -42,19 +42,21 @@ def app():
     for row in rows:
         st.write(f"大会名: {row[0]}, 大会パスワード: {row[1]}")
 
-    conn.close()
+    
 
     # Gitリポジトリのパスを指定
-    #repo = Repo('/home/s2110524/Moduletest')
+    repo = Repo('/home/s2110524/Moduletest')
 
     # 変更をステージング
-    #repo.git.add('test-monketsu.db')
+    repo.git.add('test-monketsu.db')
 
     # コミット
-    #repo.git.commit('-m', 'Update database')
+    repo.git.commit('-m', 'Update database')
 
     # GitHubにプッシュ
-    #repo.git.push('origin', 'main')
+    repo.git.push('origin', 'main')
+
+    conn.close()
 # Streamlitアプリを実行
 if __name__ == "__main__":
     app()
