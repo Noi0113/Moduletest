@@ -1,12 +1,15 @@
 import streamlit as st
 import pandas as pd
+import sqlite3
+
+
 def main():
     status_area = st.empty()
 #タイトル
-st.title('アンケート回答') 
-
-st.markdown('フォーム')
-
+st.title('アンケート回答コピー版') 
+# データベース接続の作成
+conn = sqlite3.connect('test-monketsu.db')
+c = conn.cursor()
 
 #選択肢はフォームの外に作らないとエラーが出るかも
 univ_options = ['あ','い']#こんな感じで、データベースから大学名のリストを取ってくればプルダウン作成は可能です！！！
@@ -14,11 +17,14 @@ absent_options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']#このリス�
 
 # フォームを作成します
 with st.form(key='my_form'):
-    input_taikaiid = st.text_input(label = '大会IDを入力してください')
+    input_taikaipassword = st.text_input(label = '大会passwordを入力してください') 
+    c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = input_taikaipassword')
+    data = c.fetchall()
+    taikai_namelist = list(data)
     #大会IDはフォーム外のほうがいいかもしれない…？大会IDからuniv_optionsを作成するならその処理はフォーム外になるかも？
     input_name = st.text_input(label='名前を入力してください')
     input_level = st.selectbox('級を入力してください',options=['A','B','C','D','E'])
-    input_univ = st.selectbox('大学名を入力してください', options=univ_options)
+    input_univ = st.selectbox('大学名を入力してください', options=taikai_namelist)
     #input_feedback = st.text_area(label='フィードバック')
     absent_matches = st.multiselect('欠席する試合(複数選択可)を入力してください', absent_options)
   
