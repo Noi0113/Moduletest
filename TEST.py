@@ -14,11 +14,15 @@ def app():
     # ユーザーが何かを入力した場合、それをデータベースに挿入
     if user_input:
         c.execute('''
-            INSERT INTO TestTable (text) VALUES (?)
-        , (user_input,))
+            INSERT INTO TestTable (taikai_name) VALUES (?)
+        ''', (user_input,))
         conn.commit()  # 変更を保存
 
     # データベースからデータを取得して表示
     c.execute('SELECT * FROM TestTable')
     data = c.fetchall()
     st.write(data)
+
+# Streamlitアプリを実行
+if __name__ == "__main__":
+    app()
