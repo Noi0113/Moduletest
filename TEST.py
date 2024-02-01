@@ -24,5 +24,5 @@ def app():
     st.write(data)
 
 # Streamlitアプリを実行
-if __name__ == "__main__":
-    app()
+#if __name__ == "__main__":
+ #   app()
