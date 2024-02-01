@@ -1,9 +1,6 @@
 import streamlit as st
 import sqlite3
 from git import Repo
-import os
-st.write(os.getlogin())
-
 
 # Streamlitアプリの作成
 def app():
