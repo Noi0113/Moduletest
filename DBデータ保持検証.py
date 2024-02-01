@@ -9,7 +9,7 @@ db_name = 'test-monketsu.db'
 select_all_sql = 'select * from tips'
 
 # SQLiteデータベースに接続し、データを読み込む
-with sqlite3.connect(test-monketsu.db) as conn:
+with sqlite3.connect(db_name) as conn:
     df_from_sql = pd.read_sql(select_all_sql, conn)
 
 # 列名を取り出す
@@ -35,7 +35,7 @@ else:
     sql2 = sql1(option, num)
 
     # SQL文を実行し、結果を取得
-    with sqlite3.connect(test-monketsu.db) as conn:
+    with sqlite3.connect(db_name) as conn:
         df_from_sql2 = pd.read_sql(sql2, conn)
 
     # 結果を表示
