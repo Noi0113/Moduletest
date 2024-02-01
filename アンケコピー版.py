@@ -8,8 +8,8 @@ def main():
 #タイトル
 st.title('アンケート回答コピー版!') 
 # データベース接続の作成
-conn = sqlite3.connect('test-monketsu.db')
-c = conn.cursor()
+#conn = sqlite3.connect('test-monketsu.db')
+#c = conn.cursor()
 
 #選択肢はフォームの外に作らないとエラーが出るかも
 univ_options = ['あ','い']#こんな感じで、データベースから大学名のリストを取ってくればプルダウン作成は可能です！！！
