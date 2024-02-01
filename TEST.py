@@ -5,7 +5,7 @@ from git import Repo
 
 # Streamlitアプリの作成
 def app():
-    st.title('データベース実験変更版！')
+    st.title('データベース実験変更版！!!')
     # データベース接続の作成
     conn = sqlite3.connect('test-monketsu.db')
     c = conn.cursor()
