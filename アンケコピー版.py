@@ -52,4 +52,4 @@ def new():
     st.markdown("## 次のページです")
 
 if __name__ == '__main__':
-    main()
+    app()
