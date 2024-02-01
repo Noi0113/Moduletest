@@ -21,7 +21,7 @@ def app():
         st.success("回答を送信しました！")
     
     # データベースからデータを取得して表示
-    c.execute('SELECT * FROM TestTable')
+    c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = 'え'')
     data = c.fetchall()
     st.write(data)
 
