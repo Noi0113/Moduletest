@@ -18,7 +18,7 @@ if st.button("送信"):
 
     # Gitコマンドを実行
     try:
-        subprocess.check_call(['git', 'add', 'database.db'])
+        subprocess.check_call(['git', 'add', 'test-monketsu.db'])
         subprocess.check_call(['git', 'commit', '-m', 'Update database'])
         subprocess.check_call(['git', 'push'])
         st.write("データベースがGitHubリポジトリにプッシュされました。")
