@@ -31,7 +31,7 @@ def app():
         conn.commit()
         st.success("回答を送信しました！")
     
-    conn.close()
+    #conn.close()
     
     # データベースからデータを取得して表示
     c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = "え"')
