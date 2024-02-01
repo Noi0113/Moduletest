@@ -12,17 +12,12 @@ def app():
     user_input1 = st.text_input("テキストを入力してください")
     user_input2 = st.text_input("テキストを入力してください2")
     # ユーザーが何かを入力した場合、それをデータベースに挿入
-    if user_input1:
-        c.execute('''
-            INSERT INTO TestTable (taikai_name) VALUES (?)
-        ''', (user_input1,))
-        conn.commit()  # 変更を保存
-    if user_input2:
-        c.execute('''
-            INSERT INTO TestTable (taikai_password) VALUES (?)
-        ''', (user_input2,))
-        conn.commit()  # 変更を保存
 
+    if st.button('送信'):
+        c.execute('''
+            INSERT INTO TestTable (taikai_name,taikai_password) VALUES (?)
+        ''', (user_input1,user_input2))
+    
     # データベースからデータを取得して表示
     c.execute('SELECT * FROM TestTable')
     data = c.fetchall()
