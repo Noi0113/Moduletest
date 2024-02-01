@@ -22,7 +22,3 @@ def app():
     c.execute('SELECT * FROM TestTable')
     data = c.fetchall()
     st.write(data)
-
-# Streamlitアプリを実行
-#if __name__ == "__main__":
-#app()
