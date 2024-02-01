@@ -10,6 +10,15 @@ def app():
     conn = sqlite3.connect('test-monketsu.db')
     c = conn.cursor()
 
+    c.execute('''
+    CREATE TABLE IF NOT EXISTS survey_data (
+        user_input1 TEXT,
+        user_input2 TEXT
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
     # Streamlitのテキスト入力フィールド
     user_input1 = st.text_input("テキストを入力してください")
     user_input2 = st.text_input("テキストを入力してください2")
@@ -21,6 +30,8 @@ def app():
         ''', (user_input1,user_input2))
         conn.commit()
         st.success("回答を送信しました！")
+    
+    conn.close()
     
     # データベースからデータを取得して表示
     c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = "え"')
