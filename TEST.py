@@ -10,7 +10,7 @@ def app():
 
     # Streamlitのテキスト入力フィールド
     user_input1 = st.text_input("テキストを入力してください")
-    user_input2 = st.text_input("テキストを入力してください")
+    user_input2 = st.text_input("テキストを入力してください2")
     # ユーザーが何かを入力した場合、それをデータベースに挿入
     if user_input1:
         c.execute('''
