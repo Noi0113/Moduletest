@@ -17,6 +17,8 @@ def app():
         c.execute('''
             INSERT INTO TestTable (taikai_name,taikai_password) VALUES (?)
         ''', (user_input1,user_input2))
+        conn.commit()
+        st.success("回答を送信しました！")
     
     # データベースからデータを取得して表示
     c.execute('SELECT * FROM TestTable')
