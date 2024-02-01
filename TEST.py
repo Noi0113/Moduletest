@@ -11,10 +11,10 @@ def app():
     c = conn.cursor()
 
     #c.execute('''
-    #CREATE TABLE IF NOT EXISTS survey_data (
-        #user_input1 TEXT,
-        #user_input2 TEXT
-        #)
+    #CREATE TABLE IF NOT EXISTS TestTable (
+    #    user_1 TEXT,
+    #    user_2 TEXT
+    #    )
     #''')
     #conn.commit()
 
@@ -25,16 +25,16 @@ def app():
 
     if st.button('送信'):
         c.execute('''
-            INSERT INTO TestTable (taikai_name,taikai_password) VALUES (?,?)
+            INSERT INTO TestTable(taikai_name,taikai_password) VALUES (?,?)
         ''', (user_input1,user_input2))
         conn.commit()
         st.success("回答を送信しました！")
     
     
     # データベースからデータを取得して表示
-    c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = "え"')
-    data = c.fetchall()
-    st.write(data)
+    #c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = "え"')
+    #data = c.fetchall()
+    #st.write(data)
 
     st.subheader("これまでの回答")
     c.execute("SELECT * FROM TestTable")
