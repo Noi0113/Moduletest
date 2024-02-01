@@ -15,7 +15,7 @@ def app():
     if user_input:
         c.execute('''
             INSERT INTO TestTable (text) VALUES (?)
-        ''', (user_input,))
+        , (user_input,))
         conn.commit()  # 変更を保存
 
     # データベースからデータを取得して表示
