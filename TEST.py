@@ -1,23 +1,28 @@
-import sqlite3
 import streamlit as st
+import sqlite3
 
-st.title('SQLのテスト')
-# データベースに接続
-conn = sqlite3.connect('test-monketsu.db')
+# Streamlitアプリの作成
+def app():
+    st.title('データベース実験')
+    # データベース接続の作成
+    conn = sqlite3.connect('test-monketsu.db')
+    c = conn.cursor()
 
-# カーソルオブジェクトを作成
-c = conn.cursor()
+    # Streamlitのテキスト入力フィールド
+    user_input = st.text_input("テキストを入力してください")
 
-# テーブル作成のクエリを実行
-c.execute('''
-    CREATE TABLE my_table(
-        id INTEGER PRIMARY KEY,
-        name TEXT
-    )
-''')
+    # ユーザーが何かを入力した場合、それをデータベースに挿入
+    if user_input:
+        c.execute('''
+            INSERT INTO TestTable (text) VALUES (?)
+        ''', (user_input,))
+        conn.commit()  # 変更を保存
 
-# 変更を保存
-conn.commit()
+    # データベースからデータを取得して表示
+    c.execute('SELECT * FROM TestTable')
+    data = c.fetchall()
+    st.write(data)
 
-# データベース接続を閉じる
-conn.close()
+# Streamlitアプリを実行
+if __name__ == "__main__":
+    app()
