@@ -2,6 +2,7 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
+st.title('DBデータ保持検証')
 # データベース名
 db_name = 'test-monketsu.db'
 
