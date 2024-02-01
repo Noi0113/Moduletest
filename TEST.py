@@ -1,5 +1,7 @@
 import streamlit as st
 import sqlite3
+from git import Repo
+
 
 # Streamlitアプリの作成
 def app():
@@ -30,6 +32,20 @@ def app():
     rows = c.fetchall()
     for row in rows:
         st.write(f"大会名: {row[0]}, 大会パスワード: {row[1]}")
+
+    conn.close()
+
+    # Gitリポジトリのパスを指定
+    repo = Repo('C:/Users/81907/Moduletest')
+
+    # 変更をステージング
+    repo.git.add('test-monketsu.db')
+
+    # コミット
+    repo.git.commit('-m', 'Update database')
+
+    # GitHubにプッシュ
+    repo.git.push('origin', 'main')
 # Streamlitアプリを実行
 if __name__ == "__main__":
     app()
