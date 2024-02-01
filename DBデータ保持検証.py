@@ -30,7 +30,7 @@ else:
 
     # SQL文を作成
     def sql1(columns, num2):
-        sql = 'select * from tips where ' + columns + ' > ' + num2
+        sql = 'select * from TestTable where ' + columns + ' > ' + num2
         return sql
 
     sql2 = sql1(option, num)
