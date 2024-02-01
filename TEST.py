@@ -17,7 +17,6 @@ def app():
         #)
     #''')
     #conn.commit()
-    #conn.close()
 
     # Streamlitのテキスト入力フィールド
     user_input1 = st.text_input("テキストを入力してください")
@@ -31,7 +30,6 @@ def app():
         conn.commit()
         st.success("回答を送信しました！")
     
-    #conn.close()
     
     # データベースからデータを取得して表示
     c.execute('SELECT taikai_name FROM TestTable WHERE taikai_password = "え"')
