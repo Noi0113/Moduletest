@@ -5,7 +5,7 @@ from git import Repo
 
 # Streamlitアプリの作成
 def app():
-    st.title('データベース実験変更版！')
+    st.title('データベース実験変更版！!')
     # データベース接続の作成
     conn = sqlite3.connect('test-monketsu.db')
     c = conn.cursor()
@@ -45,7 +45,7 @@ def app():
     
 
     # Gitリポジトリのパスを指定
-    repo = Repo('/home/s2110524/Moduletest')
+    repo = Repo('/home/s2110524/Moduletest/.git')
 
     # 変更をステージング
     repo.git.add('test-monketsu.db')
