@@ -26,7 +26,7 @@ def app():
     st.write(data)
 
     st.subheader("これまでの回答")
-    c.execute("SELECT * FROM test-monketsu")
+    c.execute("SELECT * FROM TestTable")
     rows = c.fetchall()
     for row in rows:
         st.write(f"大会名: {row[0]}, 大会パスワード: {row[1]}")
