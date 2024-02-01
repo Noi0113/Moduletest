@@ -3,7 +3,7 @@ import sqlite3
 
 # Streamlitアプリの作成
 def app():
-    st.title('データベース実験')
+    st.title('データベース実験変更版')
     # データベース接続の作成
     conn = sqlite3.connect('test-monketsu.db')
     c = conn.cursor()
