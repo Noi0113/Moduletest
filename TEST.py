@@ -36,7 +36,7 @@ def app():
     conn.close()
 
     # Gitリポジトリのパスを指定
-    repo = Repo('.')
+    repo = Repo('C:\Users\81907\Moduletest')
 
     # 変更をステージング
     repo.git.add('test-monketsu.db')
