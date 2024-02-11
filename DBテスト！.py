@@ -2,11 +2,11 @@ import streamlit as st
 import sqlite3
 import subprocess
 
-# Gitのユーザー情報
+# Gitのユーザー情報(ここはこれでうまくいっている) 
 GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
 
-# Gitの認証情報をキャッシュする関数
+# Gitの認証情報をキャッシュする関数(これも多分めっちゃうまくいってる)
 def cache_git_credentials():
     try:
         subprocess.run(["git", "config", "--global", "credential.helper", "cache"], check=True)
