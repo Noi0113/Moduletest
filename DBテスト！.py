@@ -3,6 +3,12 @@ import streamlit as st
 import sqlite3
 import subprocess
 
+# Gitのユーザー情報を設定
+GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
+GIT_USER_NAME = "Noi0113"
+os.environ['GIT_COMMITTER_EMAIL'] = GIT_USER_EMAIL
+os.environ['GIT_COMMITTER_NAME'] = GIT_USER_NAME
+
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
@@ -12,7 +18,7 @@ def cache_git_credentials():
         st.error(f'エラーが発生しました: {e}')
 
 # SQLiteデータベースに接続
-conn = sqlite3.connect('test-monketsu.db')
+conn = sqlite3.connect('data.db')
 c = conn.cursor()
 
 # テーブルが存在しない場合は作成
@@ -47,4 +53,3 @@ def main():
 if __name__ == '__main__':
     cache_git_credentials()  # Gitの認証情報をキャッシュ
     main()
-
