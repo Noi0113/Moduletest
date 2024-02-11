@@ -12,7 +12,7 @@ def cache_git_credentials():
         st.error(f'エラーが発生しました: {e}')
 
 # SQLiteデータベースに接続
-conn = sqlite3.connect('data.db')
+conn = sqlite3.connect('test-monketsu.db')
 c = conn.cursor()
 
 # テーブルが存在しない場合は作成
