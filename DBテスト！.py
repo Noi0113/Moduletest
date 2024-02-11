@@ -1,26 +1,50 @@
+import os
+import streamlit as st
 import sqlite3
 import subprocess
-import streamlit as st
 
-st.title('DBテスト！')
-# ユーザーからの入力を収集
-user_input = st.text_input("何か入力してください")
-
-if st.button("送信"):
-    # データをデータベースに保存
-    conn = sqlite3.connect('test-monketsu.db')
-    c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS user_inputs (input TEXT)")
-    c.execute("INSERT INTO user_inputs VALUES (?)", (user_input,))
-    conn.commit()
-    conn.close()
-    st.write(f"あなたが入力したテキスト: {user_input}")
-
-    # Gitコマンドを実行
+# Gitの認証情報をキャッシュする関数
+def cache_git_credentials():
     try:
-        subprocess.check_call(['git', 'add', 'test-monketsu.db'])
-        subprocess.check_call(['git', 'commit', '-m', 'Update database'])
-        subprocess.check_call(['git', 'push'])
-        st.write("データベースがGitHubリポジトリにプッシュされました。")
+        subprocess.run(["git", "config", "--global", "credential.helper", "cache"], check=True)
+        st.success('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
-        st.write("エラーが発生しました：", e)
+        st.error(f'エラーが発生しました: {e}')
+
+# SQLiteデータベースに接続
+conn = sqlite3.connect('data.db')
+c = conn.cursor()
+
+# テーブルが存在しない場合は作成
+c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
+             column1 datatype,
+             column2 datatype
+             )''')
+
+# Streamlitアプリケーション
+def main():
+    st.title('データ入力')
+
+    # データ入力フォーム
+    input_data1 = st.text_input('データ1')
+    input_data2 = st.text_input('データ2')
+
+    # 入力されたデータをデータベースに挿入
+    if st.button('データを保存'):
+        c.execute("INSERT INTO your_table_name (column1, column2) VALUES (?, ?)", (input_data1, input_data2))
+        conn.commit()
+        st.success('データを保存しました')
+
+        # Gitコマンドを実行して変更をプッシュ
+        try:
+            subprocess.run(["git", "add", "."], check=True)
+            subprocess.run(["git", "commit", "-m", "'データを更新'"], check=True)
+            subprocess.run(["git", "push"], check=True)
+            st.success('データを保存し、GitHubにプッシュしました')
+        except subprocess.CalledProcessError as e:
+            st.error(f'エラーが発生しました: {e}')
+
+if __name__ == '__main__':
+    cache_git_credentials()  # Gitの認証情報をキャッシュ
+    main()
+
