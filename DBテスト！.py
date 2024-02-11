@@ -6,6 +6,9 @@ import subprocess
 GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
 
+# GitHubのアクセストークン
+GITHUB_ACCESS_TOKEN = "ここにアクセストークンを入力"
+
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
@@ -26,7 +29,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、HTTPSをどうにかした版。ユーザー認証特化型')
+    st.title('データ入力、アクセストークンをどうにかした版')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -46,7 +49,10 @@ def main():
             
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
-            subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True)
+            
+            # GitHubのアクセストークンを使用してプッシュ
+            subprocess.run(["git", "push", f"https://{GITHUB_ACCESS_TOKEN}@github.com/Noi0113/Moduletest.git"], check=True)
+            
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
             st.error(f'エラーが発生しました: {e}')
