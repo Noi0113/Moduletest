@@ -42,7 +42,7 @@ def main():
         try:
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
-            subprocess.run(["git", "push", ""], check=True)
+            subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True)
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
             st.error(f'エラーが発生しました: {e}')
