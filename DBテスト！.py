@@ -38,7 +38,7 @@ def main():
         # Gitコマンドを実行して変更をプッシュ
         try:
             subprocess.run(["git", "add", "."], check=True)
-            subprocess.run(["git", "commit", "-m", "'データを更新'"], check=True)
+            subprocess.run(["git", "commit", "-m", "Update data"], check=True)
             subprocess.run(["git", "push"], check=True)
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
