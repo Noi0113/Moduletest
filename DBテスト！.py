@@ -1,15 +1,10 @@
-import os
 import streamlit as st
 import sqlite3
 import subprocess
 
-st.title('DBtest2月11日版')
-
-# Gitのユーザー情報を設定
+# Gitのユーザー情報
 GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
-os.environ['GIT_COMMITTER_EMAIL'] = GIT_USER_EMAIL
-os.environ['GIT_COMMITTER_NAME'] = GIT_USER_NAME
 
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
@@ -20,7 +15,7 @@ def cache_git_credentials():
         st.error(f'エラーが発生しました: {e}')
 
 # SQLiteデータベースに接続
-conn = sqlite3.connect('data.db')
+conn = sqlite3.connect('test-monketsu.db')
 c = conn.cursor()
 
 # テーブルが存在しない場合は作成
@@ -46,7 +41,7 @@ def main():
         # Gitコマンドを実行して変更をプッシュ
         try:
             subprocess.run(["git", "add", "."], check=True)
-            subprocess.run(["git", "commit", "-m", "Update data"], check=True)
+            subprocess.run(["git", "commit", "-m", "Update data", "--author", f"{GIT_USER_NAME} <{GIT_USER_EMAIL}>"], check=True)
             subprocess.run(["git", "push"], check=True)
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
