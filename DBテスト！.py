@@ -41,8 +41,8 @@ def main():
         # Gitコマンドを実行して変更をプッシュ
         try:
             subprocess.run(["git", "add", "."], check=True)
-            subprocess.run(["git", "commit", "-m", "Update data", "--author", f"{GIT_USER_NAME} <{GIT_USER_EMAIL}>"], check=True)
-            subprocess.run(["git", "push"], check=True)
+            subprocess.run(["git", "commit", "-m", "Update data"], check=True)
+            subprocess.run(["git", "push", ""], check=True)
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
             st.error(f'エラーが発生しました: {e}')
