@@ -2,11 +2,11 @@ import streamlit as st
 import sqlite3
 import subprocess
 
-# Gitのユーザー情報(ここはこれでうまくいっている) 
+# Gitのユーザー情報を設定する
 GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
 
-# Gitの認証情報をキャッシュする関数(これも多分めっちゃうまくいってる)
+# Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
         subprocess.run(["git", "config", "--global", "credential.helper", "cache"], check=True)
@@ -40,6 +40,10 @@ def main():
 
         # Gitコマンドを実行して変更をプッシュ
         try:
+            # Gitのユーザー情報を直接指定してコミットを作成
+            subprocess.run(["git", "config", "--global", "user.email", GIT_USER_EMAIL])
+            subprocess.run(["git", "config", "--global", "user.name", GIT_USER_NAME])
+            
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
             subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True)
