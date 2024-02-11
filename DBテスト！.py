@@ -3,6 +3,8 @@ import streamlit as st
 import sqlite3
 import subprocess
 
+st.title('DBtest2月11日版')
+
 # Gitのユーザー情報を設定
 GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
