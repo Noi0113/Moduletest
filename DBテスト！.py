@@ -16,12 +16,13 @@ def cache_git_credentials():
         # credential.helper を設定していない場合に wincred ヘルパーを設定する
         existing_helper = subprocess.run(["git", "config", "--global", "--get", "credential.helper"], capture_output=True, text=True)
         if existing_helper.stdout.strip() != "wincred":
-            subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
-            subprocess.run(["git", "config", "--global", "credential.helper", "wincred"], check=True)
+            subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True, capture_output=True)
+            subprocess.run(["git", "config", "--global", "credential.helper", "wincred"], check=True, capture_output=True)
         
         print('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
         print(f'エラーが発生しました: {e}')
+
 
 # SQLiteデータベースに接続
 conn = sqlite3.connect('test-monketsu.db')
@@ -35,7 +36,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシュもどうにかした)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシュもどうにかした！)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
