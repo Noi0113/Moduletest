@@ -13,7 +13,7 @@ GITHUB_ACCESS_TOKEN = "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"
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
-        subprocess.run(["git", "config", "--global", "credential.helper", "cache","--timeout=3600"], check=True)
+        subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
         st.success('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
         st.error(f'エラーが発生しました: {e}')
@@ -30,7 +30,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした')
+    st.title('データ入力、アクセストークンをどうにかした!!')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
