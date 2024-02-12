@@ -11,7 +11,15 @@ GIT_USER_NAME = "Noi0113"
 GITHUB_ACCESS_TOKEN = "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"
 
 # Gitの認証情報をキャッシュする関数
-
+def cache_git_credentials():
+    try:
+        # credential.helper をクリアする
+        subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
+        # credential.helper を再設定する
+        subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
+        st.success('Gitの認証情報をキャッシュしました')
+    except subprocess.CalledProcessError as e:
+        st.error(f'エラーが発生しました: {e}')
 
 # SQLiteデータベースに接続
 conn = sqlite3.connect('test-monketsu.db')
