@@ -13,6 +13,8 @@ GITHUB_ACCESS_TOKEN = "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"
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
+         # 既存の credential.helper 設定をクリアする
+        subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
         subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
         st.success('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
