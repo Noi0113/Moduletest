@@ -56,7 +56,7 @@ def main():
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
 
-             env = os.environ.copy()
+            env = os.environ.copy()
             env["GIT_ASKPASS"] = "echo"
             env["GIT_USERNAME"] = GITHUB_ACCESS_TOKEN
 
