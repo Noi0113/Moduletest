@@ -8,7 +8,7 @@ GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
 
 # GitHubのアクセストークン
-GITHUB_ACCESS_TOKEN = "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"
+GITHUB_ACCESS_TOKEN = "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"
 
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
@@ -30,7 +30,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした版!')
+    st.title('データ入力、アクセストークンをどうにかした版')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
