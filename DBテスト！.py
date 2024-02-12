@@ -51,7 +51,7 @@ def main():
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
             
             # GitHubのアクセストークンを使用してプッシュ
-           subprocess.run(["git", "push", f"https://{GIT_USER_NAME}:{GITHUB_ACCESS_TOKEN}@github.com/{GIT_USER_NAME}/Moduletest.git"], check=True)
+            subprocess.run(["git", "push", f"https://{GIT_USER_NAME}:{GITHUB_ACCESS_TOKEN}@github.com/{GIT_USER_NAME}/Moduletest.git"], check=True)
 
             
             st.success('データを保存し、GitHubにプッシュしました')
