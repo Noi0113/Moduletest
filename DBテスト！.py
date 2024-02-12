@@ -13,16 +13,16 @@ GITHUB_ACCESS_TOKEN = "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"
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
-        # credential.helper を設定していない場合に store ヘルパーを設定する
+        # credential.helper を設定していない場合に wincred ヘルパーを設定する
         existing_helper = subprocess.run(["git", "config", "--global", "--get", "credential.helper"], capture_output=True, text=True)
-        if existing_helper.stdout.strip() != "store":
+        if existing_helper.stdout.strip() != "wincred":
             subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
-            subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
+            subprocess.run(["git", "config", "--global", "credential.helper", "wincred"], check=True)
         
         print('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
         print(f'エラーが発生しました: {e}')
-        
+
 # SQLiteデータベースに接続
 conn = sqlite3.connect('test-monketsu.db')
 c = conn.cursor()
@@ -35,7 +35,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシュもどうにかした)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
