@@ -2,7 +2,6 @@ import streamlit as st
 import sqlite3
 import subprocess
 import os
-st.title('ここに書いたらいけるかな')
 
 # Gitのユーザー情報を設定する
 GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
