@@ -18,7 +18,7 @@ def cache_git_credentials():
         existing_helper_output = existing_helper.stdout.strip()
 
         # credential.helper が存在しない場合のみ wincred ヘルパーを設定する
-        if "wincred" not in existing_helper_output:
+        if "store" not in existing_helper_output:
             subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True, capture_output=True)
             print('Gitの認証情報をキャッシュしました')
         else:
