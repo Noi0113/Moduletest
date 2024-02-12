@@ -13,17 +13,16 @@ GITHUB_ACCESS_TOKEN = "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"
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
-        # credential.helper を設定する前に、存在を確認する
+        # credential.helper を設定していない場合に store ヘルパーを設定する
         existing_helper = subprocess.run(["git", "config", "--global", "--get", "credential.helper"], capture_output=True, text=True)
         if existing_helper.stdout.strip() != "store":
-            # credential.helper が存在しないか、store ヘルパーでない場合に設定する
             subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
             subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
         
         print('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
         print(f'エラーが発生しました: {e}')
-
+        
 # SQLiteデータベースに接続
 conn = sqlite3.connect('test-monketsu.db')
 c = conn.cursor()
@@ -36,7 +35,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更！)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変//)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -57,8 +56,12 @@ def main():
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
 
+             env = os.environ.copy()
+            env["GIT_ASKPASS"] = "echo"
+            env["GIT_USERNAME"] = GITHUB_ACCESS_TOKEN
+
             # GitHubのアクセストークンを使用してプッシュ
-            subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True)
+            subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True,env=env)
             
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
