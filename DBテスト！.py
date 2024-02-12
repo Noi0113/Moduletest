@@ -29,7 +29,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした版')
+    st.title('データ入力、アクセストークンをどうにかした版!修正版')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -52,7 +52,6 @@ def main():
             
             # GitHubのアクセストークンを使用してプッシュ
             subprocess.run(["git", "push", f"https://{GIT_USER_NAME}:{GITHUB_ACCESS_TOKEN}@github.com/{GIT_USER_NAME}/Moduletest.git"], check=True)
-
             
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
