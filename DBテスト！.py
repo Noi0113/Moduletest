@@ -32,7 +32,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした!!')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
