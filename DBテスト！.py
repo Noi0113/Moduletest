@@ -13,13 +13,16 @@ GITHUB_ACCESS_TOKEN = "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"
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
-        # credential.helper をクリアする
-        subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
-        # credential.helper を再設定する
-        subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
-        st.success('Gitの認証情報をキャッシュしました')
+        # credential.helper を設定する前に、存在を確認する
+        existing_helper = subprocess.run(["git", "config", "--global", "--get", "credential.helper"], capture_output=True, text=True)
+        if existing_helper.stdout.strip() != "store":
+            # credential.helper が存在しないか、store ヘルパーでない場合に設定する
+            subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
+            subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
+        
+        print('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
-        st.error(f'エラーが発生しました: {e}')
+        print(f'エラーが発生しました: {e}')
 
 # SQLiteデータベースに接続
 conn = sqlite3.connect('test-monketsu.db')
@@ -33,7 +36,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更！！)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更！)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
