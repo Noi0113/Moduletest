@@ -35,7 +35,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -61,7 +61,7 @@ def main():
             env["GIT_USERNAME"] = GITHUB_ACCESS_TOKEN
 
             # GitHubのアクセストークンを使用してプッシュ
-            subprocess.run(["git", "push", "https://Noi0113:" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True, env=env)
+            subprocess.run(["git", "push", "https://Noi0113:" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True)
             
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
