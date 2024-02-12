@@ -43,9 +43,14 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
              column2 datatype
              )''')
 
+#Git_Askpass(Gitがパスワードを要求する際に使用するコマンドを指定するための環境変数)を無効か
+if 'GIT_ASKPASS' in os.environ:
+    del os.environ['GIT_ASKPASS']
+
+
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシ!!!)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシ!)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
