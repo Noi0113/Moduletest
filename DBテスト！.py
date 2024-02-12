@@ -25,7 +25,7 @@ def cache_git_credentials():
             st.write('Gitの認証情報はすでにキャッシュされています')
 
     except subprocess.CalledProcessError as e:
-        print(f'エラーが発生しました: {e}')
+        st.write(f'エラーが発生しました: {e}')
 
 # 関数を実行して認証情報をキャッシュする
 cache_git_credentials()
@@ -45,7 +45,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシ)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシ!!!)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -71,7 +71,8 @@ def main():
             env["GIT_USERNAME"] = GITHUB_ACCESS_TOKEN
 
             # GitHubのアクセストークンを使用してプッシュ
-            subprocess.run(["git", "push", "https://Noi0113:" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True)
+            subprocess.run(["git", "push", "https://" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True)
+
             
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
