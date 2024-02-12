@@ -7,7 +7,7 @@ GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "Noi0113"
 
 # GitHubのアクセストークン
-GITHUB_ACCESS_TOKEN = "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"
+GITHUB_ACCESS_TOKEN = "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"
 
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
