@@ -10,8 +10,6 @@ GIT_USER_NAME = "Noi0113"
 # GitHubのアクセストークン
 GITHUB_ACCESS_TOKEN = "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"
 
-import subprocess
-
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
@@ -21,7 +19,7 @@ def cache_git_credentials():
 
         # credential.helper が存在しない場合のみ wincred ヘルパーを設定する
         if "wincred" not in existing_helper_output:
-            subprocess.run(["git", "config", "--global", "credential.helper", "wincred"], check=True, capture_output=True)
+            subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True, capture_output=True)
             print('Gitの認証情報をキャッシュしました')
         else:
             print('Gitの認証情報はすでにキャッシュされています')
