@@ -10,18 +10,27 @@ GIT_USER_NAME = "Noi0113"
 # GitHubのアクセストークン
 GITHUB_ACCESS_TOKEN = "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"
 
+import subprocess
+
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
-        # credential.helper を store ヘルパーに設定
+        # credential.helper を設定していない場合に wincred ヘルパーを設定する
         existing_helper = subprocess.run(["git", "config", "--global", "--get", "credential.helper"], capture_output=True, text=True)
-        if existing_helper.stdout.strip() != "store":
-            subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True, capture_output=True)
-            subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True, capture_output=True)
-        
-        print('Gitの認証情報をキャッシュしました')
+        existing_helper_output = existing_helper.stdout.strip()
+
+        # credential.helper が存在しない場合のみ wincred ヘルパーを設定する
+        if "wincred" not in existing_helper_output:
+            subprocess.run(["git", "config", "--global", "credential.helper", "wincred"], check=True, capture_output=True)
+            print('Gitの認証情報をキャッシュしました')
+        else:
+            print('Gitの認証情報はすでにキャッシュされています')
+
     except subprocess.CalledProcessError as e:
         print(f'エラーが発生しました: {e}')
+
+# 関数を実行して認証情報をキャッシュする
+cache_git_credentials()
 
 
 
@@ -38,7 +47,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシュもどうにかした(store))')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更。キャッシュもどうにかした)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
