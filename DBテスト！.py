@@ -13,8 +13,9 @@ GITHUB_ACCESS_TOKEN = "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"
 # Gitの認証情報をキャッシュする関数
 def cache_git_credentials():
     try:
-         # 既存の credential.helper 設定をクリアする
+        # credential.helper をクリアする
         subprocess.run(["git", "config", "--global", "--unset-all", "credential.helper"], check=True)
+        # credential.helper を再設定する
         subprocess.run(["git", "config", "--global", "credential.helper", "store"], check=True)
         st.success('Gitの認証情報をキャッシュしました')
     except subprocess.CalledProcessError as e:
@@ -32,7 +33,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更)')
+    st.title('データ入力、アクセストークンをどうにかした(パスワードをトークンに変更！！)')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -53,19 +54,13 @@ def main():
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Update data"], check=True)
 
-            # 環境変数を使用してGitHubのアクセストークンを渡す
-            env = os.environ.copy()
-            env["GIT_ASKPASS"] = "echo"
-            env["GIT_USERNAME"] = GITHUB_ACCESS_TOKEN    
-            
             # GitHubのアクセストークンを使用してプッシュ
-            subprocess.run(["git", "push","https://github.com/Noi0113/Moduletest.git"], check=True, env=env)
-
+            subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True)
             
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
             st.error(f'エラーが発生しました: {e}')
-
+            
 if __name__ == '__main__':
     cache_git_credentials()  # Gitの認証情報をキャッシュ
     main()
