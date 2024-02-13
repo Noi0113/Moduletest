@@ -10,7 +10,7 @@ GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
 GIT_USER_NAME = "=Noi0113"
 
 # GitHubのアクセストークン
-GITHUB_ACCESS_TOKEN = "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"
+GITHUB_ACCESS_TOKEN = "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"
 
 # SQLite3データベースに接続
 conn = sqlite3.connect(DATABASE_PATH)
@@ -24,7 +24,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('一旦リセットしたよ！')
+    st.title('一旦リセットしたよ！トークンも！')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
