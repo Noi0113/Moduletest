@@ -21,7 +21,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSHでの認証を試してみる')
+    st.title('SSHでの認証を試してみる!')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -37,7 +37,7 @@ def main():
         try:
             subprocess.run(["git", "add", DATABASE_PATH], check=True)
             subprocess.run(["git", "commit", "-m", "Update test-monketsu.db"], check=True)
-            subprocess.run(["git", "push"], check=True)
+            subprocess.run(["git", "push","git@github.com:Noi0113/Moduletest.git"], check=True)
 
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
