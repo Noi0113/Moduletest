@@ -46,7 +46,7 @@ def main():
             subprocess.run(["git", "commit", "-m", "Update database"], check=True)
 
             # GitHubのアクセストークンを使用してプッシュ
-            env1 = {"GIT_ASKPASS": "echo", "GIT_USERNAME": GITHUB_ACCESS_TOKEN}
+            env1 = {"GIT_ASKPASS": "echo", "GIT_USERNAME": GIT_USER_NAME, "GIT_PASSWORD": GITHUB_ACCESS_TOKEN}
             subprocess.run(["git", "push", "https://" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True, env=env1)
             
             st.success('データを保存し、GitHubにプッシュしました')
