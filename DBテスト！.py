@@ -24,7 +24,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('一旦リセットしたよ！トークンも！')
+    st.title('一旦リセットしたよ！トークン!!も！')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -43,7 +43,7 @@ def main():
             subprocess.run(["git", "config", "--global", "user.name", GIT_USER_NAME])
             
             subprocess.run(["git", "add", DATABASE_PATH], check=True)
-            subprocess.run(["git", "commit", "-m", "Update database"], check=True)
+            subprocess.run(["git", "commit", "-m", "Update test-monketsu.db"], check=True)
 
             # GitHubのアクセストークンを使用してプッシュ
             #env1 = {"GIT_ASKPASS": "echo", "GIT_USERNAME": GIT_USER_NAME, "GIT_PASSWORD": GITHUB_ACCESS_TOKEN}
