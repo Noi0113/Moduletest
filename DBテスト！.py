@@ -24,7 +24,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('一旦リセットしたよ！トークン!!も！！！！')
+    st.title('一旦リセットしたよ！トークン!!')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -47,9 +47,9 @@ def main():
 
             # GitHubのアクセストークンを使用してプッシュ
             #env1 = {"GIT_ASKPASS": "echo", "GIT_USERNAME": GIT_USER_NAME, "GIT_PASSWORD": GITHUB_ACCESS_TOKEN}
-            #subprocess.run(["git", "push", "https://" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True, env=env1)
+            #subprocess.run(["git", "push", "https://@github.com/Noi0113/Moduletest.git"], check=True, env=env1)
           
-            subprocess.run(["git", "push", "https://x-access-token:" + GITHUB_ACCESS_TOKEN + "@github.com/Noi0113/Moduletest.git"], check=True)
+            subprocess.run(["git", "push", "https://github.com/Noi0113/Moduletest.git"], check=True)
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
             st.error(f'エラーが発生しました: {e}')
