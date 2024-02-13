@@ -3,6 +3,13 @@ import sqlite3
 import subprocess
 import os
 
+# SSHコマンドでconfig情報を取得
+result = subprocess.run(["ssh", "-G", "github.com"], capture_output=True, text=True)
+ssh_config_output = result.stdout
+
+# config情報を表示
+st.write(ssh_config_output)
+
 def parse_ssh_config():
     ssh_config = {}
     config_file_path = os.path.expanduser("~/.ssh/config")
@@ -49,7 +56,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSHでの認証を試してみる')
+    st.title('SSHでの認証を試してみる?')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
