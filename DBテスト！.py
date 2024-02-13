@@ -6,11 +6,11 @@ import subprocess
 DATABASE_PATH = 'test-monketsu.db'
 
 # Gitのユーザー情報を設定する
-GIT_USER_EMAIL = "s709776801.55yotsuya@gmail.com"
-GIT_USER_NAME = "=Noi0113"
+GIT_USER_EMAIL = 's709776801.55yotsuya@gmail.com'
+GIT_USER_NAME = 'Noi0113'
 
 # GitHubのアクセストークン
-GITHUB_ACCESS_TOKEN = "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"
+GITHUB_ACCESS_TOKEN = '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'
 
 # SQLite3データベースに接続
 conn = sqlite3.connect(DATABASE_PATH)
