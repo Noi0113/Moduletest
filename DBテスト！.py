@@ -21,7 +21,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSHでの認証を試してみる!')
+    st.title('SSHでの認証を試してみる!!!!!!!!!!!!!!!')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
