@@ -25,9 +25,9 @@ ssh_config = parse_ssh_config()
 
 # GitHubのホスト設定が存在するか確認
 if "github.com" in ssh_config:
-    print("SSH config file is being loaded by Python process.")
+    st.write("SSH config file is being loaded by Python process.")
 else:
-    print("SSH config file is NOT being loaded by Python process.")
+    st.write("SSH config file is NOT being loaded by Python process.")
 
 
 # SQLite3データベースファイルのパス
