@@ -24,7 +24,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('一旦リセットしたよん')
+    st.title('一旦リセットしたよん！')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
