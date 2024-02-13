@@ -24,7 +24,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('一旦リセットしたよ！トークン')
+    st.title('一旦リセットしたよ！トークン！')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
@@ -39,17 +39,14 @@ def main():
         # Gitコマンドを実行して変更をプッシュ
         try:
             # Gitのユーザー情報を直接指定してコミットを作成
-            subprocess.run(["git", "config", "--global", "user.email", GIT_USER_EMAIL])
-            subprocess.run(["git", "config", "--global", "user.name", GIT_USER_NAME])
+            subprocess.check_call(["git", "config", "--global", "user.email", GIT_USER_EMAIL])
+            subprocess.check_call(["git", "config", "--global", "user.name", GIT_USER_NAME])
             
-            subprocess.run(["git", "add", DATABASE_PATH], check=True)
-            subprocess.run(["git", "commit", "-m", "Update test-monketsu.db"], check=True)
+            subprocess.check_call(["git", "add", DATABASE_PATH])
+            subprocess.check_call(["git", "commit", "-m", "Update test-monketsu.db"])
 
             # GitHubのアクセストークンを使用してプッシュ
-            #env1 = {"GIT_ASKPASS": "echo", "GIT_USERNAME": GIT_USER_NAME, "GIT_PASSWORD": GITHUB_ACCESS_TOKEN}
-            #subprocess.run(["git", "push", "https://@github.com/Noi0113/Moduletest.git"], check=True, env=env1)
-          
-            subprocess.run(["git", "push", "https://Noi0113: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@github.com/Noi0113/Moduletest.git"], check=True)
+            subprocess.check_call(["git", "push", "https://Noi0113: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@github.com/Noi0113/Moduletest.git"])
 
             st.success('データを保存し、GitHubにプッシュしました')
         except subprocess.CalledProcessError as e:
