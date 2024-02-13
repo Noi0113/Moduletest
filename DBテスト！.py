@@ -1,15 +1,33 @@
 import streamlit as st
 import sqlite3
 import subprocess
-# SSHの設定を表示
-result = subprocess.run(["ssh", "-G", "github.com"], capture_output=True, text=True)
-ssh_config = result.stdout
+import os
 
-# ~/.ssh/configファイルが読み込まれているかを確認
-if "Host github.com" in ssh_config:
-    st.write("SSH config file is being loaded by Python process.")
+def parse_ssh_config():
+    ssh_config = {}
+    config_file_path = os.path.expanduser("~/.ssh/config")
+    if os.path.exists(config_file_path):
+        with open(config_file_path, "r") as f:
+            lines = f.readlines()
+            host = None
+            for line in lines:
+                line = line.strip()
+                if line.startswith("Host "):
+                    host = line.split()[1]
+                    ssh_config[host] = {}
+                elif line.startswith("  ") and host:
+                    key, value = line.strip().split(maxsplit=1)
+                    ssh_config[host][key] = value
+    return ssh_config
+
+# SSH設定を取得
+ssh_config = parse_ssh_config()
+
+# GitHubのホスト設定が存在するか確認
+if "github.com" in ssh_config:
+    print("SSH config file is being loaded by Python process.")
 else:
-    st.write("SSH config file is NOT being loaded by Python process.")
+    print("SSH config file is NOT being loaded by Python process.")
 
 
 # SQLite3データベースファイルのパス
@@ -31,7 +49,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSHでの認証を試してみる!')
+    st.title('SSHでの認証を試してみる')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
