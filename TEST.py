@@ -5,7 +5,8 @@ import os
 
 
 # ユーザーのホームディレクトリからの相対パスを絶対パスに変換
-private_key_path = os.path.expanduser(r'C:\Users\81907\.ssh\id_rsa')
+#private_key_path = os.path.expanduser(r'C:\Users\81907\.ssh\id_rsa')
+private_key_path = r'C:\Users\81907\.ssh\id_rsa'
 
 # 秘密鍵ファイルが存在するか確認
 if os.path.exists(private_key_path):
@@ -48,7 +49,7 @@ def test_ssh_connection(hostname, username, private_key_path):
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSH接続テスト！？')
+    st.title('SSH接続テスト？')
     
     # SSH接続を試みるボタン
     if st.button('SSH接続をテストする'):
