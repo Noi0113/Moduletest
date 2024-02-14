@@ -19,8 +19,7 @@ sheet = gc.open('monketsu-for-test').sheet1
 user_input = st.text_input('Enter your information:')
 
 if st.button('Submit'):
-    # ここで特定の列にデータを書き込む
-    column_number = 5  # 例として2列目に書き込む
-    row_index = 3  # 例として2行目に書き込む
-    sheet.update_cell(column_number, user_input)
+    column_number = 2  # 例として2列目に書き込む
+    last_row = len(worksheet.col_values(column_number)) + 1
+    worksheet.update_cell(last_row, column_number, user_input)
     st.success('Data has been written to Google Sheets!')
