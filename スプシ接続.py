@@ -18,11 +18,14 @@ sheet = gc.open('monketsu-for-test').sheet1
 
 # Streamlitでの入力
 user_input = st.text_input('Enter your information:')
+user_input2 = st.text_input('Enter your information2:')
 
 if st.button('Submit'):
-    column_number = 2  # 例として2列目に書き込む
-    last_row = len(sheet.col_values(column_number)) + 1
+    column_number = 1
+    column_number2 = 2  # 例として2列目に書き込む
+    last_row = len(sheet.col_values(column_number2)) + 1
     sheet.update_cell(last_row, column_number, user_input)
+    sheet.update_cell(last_row, column_number2, user_input2)
     st.success('Data has been written to Google Sheets!')
 
 
