@@ -10,7 +10,7 @@ st.write("Current user:", current_user)
 # ユーザー変更
 user = 'desktop-nq4p6je\\81907'  # バックスラッシュをエスケープする必要があることに注意
 script_path = 'DBテスト！.py'
-subprocess.run(['runas', '/user:' + user, 'python', script_path])
+subprocess.run(['runas', '/user:' + user, 'python', script_path],shell=True)
 
 
 #ユーザーが切り替わったか確認
