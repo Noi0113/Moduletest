@@ -13,8 +13,8 @@ scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapi
 credentials = ServiceAccountCredentials.from_json_keyfile_name('monketsu2-2b83cfd57ed6.json', scopes)
 gc = gspread.authorize(credentials)
 
-# Google Sheetsのシートを開く
-sheet = gc.open('monketsu-for-test').sheet1
+# Google Sheetsのシート2を開く
+sheet = gc.open('monketsu-for-test').get_worksheet(1)
 
 # Streamlitでの入力
 user_input = st.text_input('Enter your information:')
