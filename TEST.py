@@ -3,6 +3,17 @@ import paramiko
 
 import os
 
+
+# ユーザーのホームディレクトリからの相対パスを絶対パスに変換
+private_key_path = os.path.expanduser(r'C:\Users\81907\.ssh\id_rsa')
+
+# 秘密鍵ファイルが存在するか確認
+if os.path.exists(private_key_path):
+    st.write("秘密鍵ファイルが見つかりました:", private_key_path)
+else:
+    st.write("秘密鍵ファイルが見つかりませんでした。")
+
+
 # 秘密鍵ファイルの相対パス
 relative_path = '.ssh/id_rsa'
 
