@@ -1,32 +1,9 @@
+import os
 import streamlit as st
 import paramiko
 
-import os
-
-
-# ユーザーのホームディレクトリからの相対パスを絶対パスに変換
-#private_key_path = os.path.expanduser(r'C:\Users\81907\.ssh\id_rsa')
-private_key_path = r'C:\Users\81907\.ssh\id_rsa'
-
-# 秘密鍵ファイルが存在するか確認
-if os.path.exists(private_key_path):
-    st.write("秘密鍵ファイルが見つかりました:", private_key_path)
-else:
-    st.write("秘密鍵ファイルが見つかりませんでした。")
-
-
-# 秘密鍵ファイルの相対パス
-relative_path = '.ssh/id_rsa'
-
-# 秘密鍵ファイルの絶対パスを取得
-absolute_path = os.path.abspath(relative_path)
-
-st.write("絶対パス:", absolute_path)
-
-
-# 秘密鍵のパス
-PRIVATE_KEY_PATH = "/mount/src/moduletest/.ssh/id_rsa"
-
+# 環境変数から秘密鍵のパスを取得
+private_key_path = os.environ.get('PRIVATE_KEY_PATH')
 
 # SSH接続を試みる関数
 def test_ssh_connection(hostname, username, private_key_path):
@@ -49,11 +26,16 @@ def test_ssh_connection(hostname, username, private_key_path):
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSH接続テスト？')
-    
-    # SSH接続を試みるボタン
-    if st.button('SSH接続をテストする'):
-        test_ssh_connection('github.com', 'Noi0113', PRIVATE_KEY_PATH)
+    st.title('SSH接続テスト')
+
+    # 環境変数から取得した秘密鍵のパスが存在するか確認
+    if private_key_path and os.path.exists(private_key_path):
+        st.write("秘密鍵ファイルが見つかりました:", private_key_path)
+        # SSH接続を試みるボタン
+        if st.button('SSH接続をテストする'):
+            test_ssh_connection('example.com', 'your_username', private_key_path)
+    else:
+        st.write("秘密鍵ファイルが見つかりませんでした。")
 
 if __name__ == '__main__':
     main()
