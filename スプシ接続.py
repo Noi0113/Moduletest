@@ -3,11 +3,11 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Google Sheets認証情報の読み込み
-credentials = ServiceAccountCredentials.from_json_keyfile_name('your-credentials.json', ['https://spreadsheets.google.com/feeds'])
+credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret_990746109257-2e2kq4bo5vdfr1fe26v2f02v791jfmbl.apps.googleusercontent.com.json', ['https://spreadsheets.google.com/feeds'])
 gc = gspread.authorize(credentials)
 
 # Google Sheetsのシートを開く
-sheet = gc.open('Your Google Sheet Name').sheet1
+sheet = gc.open('monketsu-for-test').sheet1
 
 # Streamlitアプリケーション
 st.title('Streamlit Google Sheets Connection')
