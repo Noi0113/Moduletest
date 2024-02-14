@@ -14,7 +14,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('monketsu2-2b83cf
 gc = gspread.authorize(credentials)
 
 # Google Sheetsのシート2を開く
-sheet = gc.open('monketsu-for-test').get_worksheet(1)
+sheet = gc.open('monketsu-karuta').get_worksheet(1)
 
 # Streamlitでの入力
 user_input = st.text_input('Enter your information:')
