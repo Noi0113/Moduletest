@@ -14,8 +14,8 @@ script_path = 'DBテスト！.py'
 subprocess.run(['su', '-c', f'python {script_path}', user])
 
 #ユーザーが切り替わったか確認
-current_user = getpass.getuser()
-st.write("Current user:", current_user)
+current_user2 = getpass.getuser()
+st.write("Current user:", current_user2)
 
 def parse_ssh_config():
     ssh_config = {}
