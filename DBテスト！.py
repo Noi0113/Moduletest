@@ -7,11 +7,11 @@ import getpass
 current_user = getpass.getuser()
 st.write("Current user:", current_user)
 
-#ユーザー変更
-user = 'desktop-nq4p6je\81907'
+# ユーザー変更
+user = 'desktop-nq4p6je\\81907'  # バックスラッシュをエスケープする必要があることに注意
 script_path = 'DBテスト！.py'
+subprocess.run(['runas', '/user:' + user, 'python', script_path])
 
-subprocess.run(['su', '-c', f'python {script_path}', user])
 
 #ユーザーが切り替わったか確認
 current_user2 = getpass.getuser()
