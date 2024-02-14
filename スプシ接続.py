@@ -22,5 +22,5 @@ if st.button('Submit'):
     # ここで特定の列にデータを書き込む
     column_number = 5  # 例として2列目に書き込む
     row_index = 3  # 例として2行目に書き込む
-    worksheet.update_cell(row_index, column_number, user_input)
+    sheet.update_cell(row_index, column_number, user_input)
     st.success('Data has been written to Google Sheets!')
