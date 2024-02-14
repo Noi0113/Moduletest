@@ -3,7 +3,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Streamlitアプリケーション
-st.title('Streamlit Google Sheets Connection!！！！')
+st.title('Streamlit Google Sheets Connection!！')
 
 # スコープの設定（Google Sheets API および Google Drive API のスコープを追加）
 scopes = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
@@ -20,5 +20,7 @@ user_input = st.text_input('Enter your information:')
 
 # ボタンがクリックされたらGoogle Sheetsに書き込み
 if st.button('Submit'):
-    sheet.append_row([user_input])
+    # ここで特定の列にデータを書き込む
+    column_number = 2  # 例として2列目に書き込む
+    worksheet.insert_row([user_input], index=2, value_input_option='RAW')
     st.success('Data has been written to Google Sheets!')
