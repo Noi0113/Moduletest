@@ -1,6 +1,7 @@
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
 
 # Streamlitアプリケーション
 st.title('Streamlit Google Sheets Connection!')
@@ -23,3 +24,10 @@ if st.button('Submit'):
     last_row = len(sheet.col_values(column_number)) + 1
     sheet.update_cell(last_row, column_number, user_input)
     st.success('Data has been written to Google Sheets!')
+
+
+data = sheet.get_all_values()
+headers = data.pop(0)  # ヘッダーを取得し、データから削除
+df = pd.DataFrame(data, columns=headers)
+
+st.write(df)
