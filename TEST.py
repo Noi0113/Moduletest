@@ -26,14 +26,14 @@ def test_ssh_connection(hostname, username, private_key_path):
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSH接続テスト')
+    st.title('SSH接続テスト!')
 
     # 環境変数から取得した秘密鍵のパスが存在するか確認
     if private_key_path and os.path.exists(private_key_path):
         st.write("秘密鍵ファイルが見つかりました:", private_key_path)
         # SSH接続を試みるボタン
         if st.button('SSH接続をテストする'):
-            test_ssh_connection('example.com', 'your_username', private_key_path)
+            test_ssh_connection('github.com', 'Noi0113', private_key_path)
     else:
         st.write("秘密鍵ファイルが見つかりませんでした。")
 
