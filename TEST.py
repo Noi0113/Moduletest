@@ -2,7 +2,7 @@ import streamlit as st
 import paramiko
 
 # 秘密鍵のパス
-PRIVATE_KEY_PATH = 'C:/Users/81907/.ssh/id_rsa'
+PRIVATE_KEY_PATH = r"C:\Users\81907\.ssh\id_rsa"
 
 
 # SSH接続を試みる関数
@@ -26,7 +26,7 @@ def test_ssh_connection(hostname, username, private_key_path):
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSH接続テスト！！！！')
+    st.title('SSH接続テスト！')
     
     # SSH接続を試みるボタン
     if st.button('SSH接続をテストする'):
