@@ -20,6 +20,6 @@ user_input = st.text_input('Enter your information:')
 
 if st.button('Submit'):
     column_number = 2  # 例として2列目に書き込む
-    last_row = len(worksheet.col_values(column_number)) + 1
-    worksheet.update_cell(last_row, column_number, user_input)
+    last_row = len(sheet.col_values(column_number)) + 1
+    sheet.update_cell(last_row, column_number, user_input)
     st.success('Data has been written to Google Sheets!')
