@@ -13,7 +13,7 @@ st.write("絶対パス:", absolute_path)
 
 
 # 秘密鍵のパス
-PRIVATE_KEY_PATH = r"/mount/src/moduletest/.ssh/id_rsa"
+PRIVATE_KEY_PATH = "/mount/src/moduletest/.ssh/id_rsa"
 
 
 # SSH接続を試みる関数
