@@ -3,7 +3,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Google Sheets認証情報の読み込み
-credentials = ServiceAccountCredentials.from_json_keyfile_name('monketsu2-6c04201d988d.json', ['https://spreadsheets.google.com/feeds'])
+credentials = ServiceAccountCredentials.from_json_keyfile_name('', ['https://spreadsheets.google.com/feeds'])
 gc = gspread.authorize(credentials)
 
 # Google Sheetsのシートを開く
