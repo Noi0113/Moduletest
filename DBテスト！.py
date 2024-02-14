@@ -7,6 +7,16 @@ import getpass
 current_user = getpass.getuser()
 st.write("Current user:", current_user)
 
+#ユーザー変更
+user = 'desktop-nq4p6je\81907'
+script_path = 'DBテスト！.py'
+
+subprocess.run(['su', '-c', f'python {script_path}', user])
+
+#ユーザーが切り替わったか確認
+current_user = getpass.getuser()
+st.write("Current user:", current_user)
+
 def parse_ssh_config():
     ssh_config = {}
     config_file_path = os.path.expanduser("/c/Users/81907/.ssh/config")
