@@ -6,7 +6,7 @@ import os
 
 def parse_ssh_config():
     ssh_config = {}
-    config_file_path = os.path.expanduser("~/.ssh/config")
+    config_file_path = os.path.expanduser("/c/Users/81907/.ssh/config")
     if os.path.exists(config_file_path):
         with open(config_file_path, "r") as f:
             lines = f.readlines()
@@ -42,7 +42,7 @@ st.write(ssh_config_output)
 
 def parse_ssh_config():
     ssh_config = {}
-    config_file_path = os.path.expanduser("~/.ssh/config")
+    config_file_path = os.path.expanduser("/c/Users/81907/.ssh/config")
     if os.path.exists(config_file_path):
         with open(config_file_path, "r") as f:
             lines = f.readlines()
@@ -86,7 +86,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS your_table_name (
 
 # Streamlitアプリケーション
 def main():
-    st.title('SSHでの認証を試してみる!ディレクトリも')
+    st.title('SSHでの認証を試してみる!')
 
     # データ入力フォーム
     input_data1 = st.text_input('データ1')
