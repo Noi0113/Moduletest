@@ -3,6 +3,9 @@ import sqlite3
 import subprocess
 import os
 
+import getpass
+current_user = getpass.getuser()
+st.write("Current user:", current_user)
 
 def parse_ssh_config():
     ssh_config = {}
