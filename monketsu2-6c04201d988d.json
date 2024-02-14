@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "monketsu2",
+  "private_key_id": "6c04201d988d43c09b1a0659656a24ae9c5aefc7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDROfwWaSJ5wpjh\n1DPTjSBknMok27hLKZUPcmHwOr3J+PxzNdg1jsUgirNGdi02Oao9Qj1aHCV0j7GK\npxvyrlYtoURaUnl9Mkd5jGGoYsYFx7EUhq5U6e0VxHuHTKU3acN9RQe41TgRi1LQ\nf9CGp12YzrNcFD+BI3M2Wn5yo06sDrbA29rRwYEud6Z+z5omRSvEYg7xa/gENz4Z\nLvnANMu1VkVMn8goRQE344hceXwFPAp1SlzYjjpkEavtkBDl4+Qczy1AKpvwe+2F\nJIngvw8QWE+pW6ZQhQyBx0pkgyxO1Zh9gxZgOGdeblAw0B/OSDh9GbO0YRXghoji\nSdHo/u7zAgMBAAECggEAUR6jtAawNLgzsT8mluudNxUpNNAxrIajQfltqogD5KaS\nLpMeUGmZ2WudZYDVN7R04kpn4iOOjBpYUjNHXTiltgxUJZbbfqR7XM+GX5RoRX5u\nlFBBkC+gWfOzlzoqxojNoCie/VVB5192zNr5fPOwENp3ZQh+tLGLbnP4mbbifkeE\nJvhk9y9UL5Jnui4XFfrcdAI2mWRXKkE/EVYGD60B0Ccy5F3dS+Qjuw/4y13FMqbj\nL8GD0kdK3moB8+6EXjZ8PgB5nds/VV4evUKpzdkGDVMtsDDlOhJmCVIvMmySDgal\nW6ZFGUkPVv82vc81mxEV5C4p2Eleg8hVENVzn9CXRQKBgQD6LWA1qqxGzTfhQ8CR\nfK4fam7DXHmFkwqwRlYISMA7Cu0tjNUiMwNGbJrJBdctoQta8OsCc87nez7uWsEz\nC05fJP52de3BzHj8Izee0MMJoMKtp31ecUKjLXGR65NrFFWckHgfKd9PMBpz8HfP\nkXvFSq3eW1ilLk+PGFG/FhMb1wKBgQDWGJz6k9q5VzQUmG4slYVuziiQySawswzV\nsU6TGO5m34Fog7jW0GSgzbxCJ0qDI8E85xrsUQT4fVMSYpwV8u/OhT7czK1eE4jK\n+Q+kFYrj8Ciyc3KYYaxzDfqlz/3eu2rRV1KKcod+VJ3xux/GBrgjpwIchd6V862s\n8L9Xf01CRQKBgQD4JnYeBXLor7pT2Q5zwQY95yaC5YEse1PI0ZuYkAEND6N+4Qiv\n6YXAHw3Rg9eSTQGkbP/O6Ow8M8WSS7cDWJ2eRmWZPxRcfOMsxgnvoAc1z54K/e2e\n9h0xGmxiXxdUyVC6AZsE3lXAiGhUxBszao0ofxDDVDwzbCJCP88mCVFe9QKBgAhr\n+3DX9BiqV4Af5uWWFCOhtHLNltoIkQ6u5NpgdrBRRnPoCpNYqzywGyG3DfVOqMFO\njf6RyVJFC8mDW4R5g/lpwGlLG97BgfYKChV4S3hf8Bnk9LMN1IzKFfwDzIbAdJk7\niCGuE6pihbwGkl9l0ESGw0x/75uSdFiDN+OnPFDJAoGBAKxGSDPtTx5lAeDIJReB\n/NJa8d8EP/9Y+TSK2Mu28RTkSe+4L/TMCPrS35/7VaEYVLwhEKVgaTmZfBgZGifV\nwrVAUloWibyhAfef6/5YlhkVB/FDdxyOAHttROHWdO3ntz30fZDwoeb8/J7YgF6T\nEvvmiFOnhTPLqLYaF9UVCJoZ\n-----END PRIVATE KEY-----\n",
+  "client_email": "monketsu-db-test@monketsu2.iam.gserviceaccount.com",
+  "client_id": "100644098694404358735",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/monketsu-db-test%40monketsu2.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
