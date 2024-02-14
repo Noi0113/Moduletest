@@ -18,9 +18,9 @@ sheet = gc.open('monketsu-for-test').sheet1
 # Streamlitでの入力
 user_input = st.text_input('Enter your information:')
 
-# ボタンがクリックされたらGoogle Sheetsに書き込み
 if st.button('Submit'):
     # ここで特定の列にデータを書き込む
-    column_number = 2  # 例として2列目に書き込む
-    sheet.insert_row([user_input], index=2, value_input_option='RAW')
+    column_number = 5  # 例として2列目に書き込む
+    row_index = 3  # 例として2行目に書き込む
+    worksheet.update_cell(row_index, column_number, user_input)
     st.success('Data has been written to Google Sheets!')
