@@ -1,38 +1,25 @@
 import streamlit as st
 import paramiko
-import os
 
-# SSH接続を試みる関数
-def test_ssh_connection(hostname, username):
+st.title('sshtest')
+def ssh_and_push():
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
     try:
-        # SSHクライアントの作成
-        ssh = paramiko.SSHClient()
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        
-        # SSH接続
-        ssh.connect(hostname, username=username)
-        
-        # 接続が成功したことを出力
-        st.success('SSH接続に成功しました')
-        
-        # SSHセッションを閉じる
-        ssh.close()
-    except Exception as e:
-        # 接続が失敗したことを出力
-        st.error(f'SSH接続に失敗しました: {e}')
+        ssh.connect('hostname', username='username', password='password')
+        st.write("SSH接続成功")
+    except paramiko.AuthenticationException:
+        st.write("認証エラー: SSH接続失敗")
+        return
+    except:
+        st.write("接続エラー: SSH接続失敗")
+        return
 
-# Streamlitアプリケーション
-def main():
-    st.title('SSH接続テスト！！！！')
+    try:
+        stdin, stdout, stderr = ssh.exec_command('cd /path/to/your/repo && git add . && git commit -m "your commit message" && git push origin master')
+        st.write("gitコマンド実行成功")
+    except:
+        st.write("gitコマンド実行エラー")
 
-    # SSH接続を試みるボタン
-    if st.button('SSH接続をテストする'):
-        # ローカルのSSHエージェントを利用してSSH接続を試みる
-        try:
-            os.system('ssh-add')  # SSHエージェントに鍵を追加
-            test_ssh_connection('example.com', 'your_username')
-        except Exception as e:
-            st.error(f'SSH接続に失敗しました: {e}')
-
-if __name__ == '__main__':
-    main()
+st.button("Push to Git", on_click=ssh_and_push)
