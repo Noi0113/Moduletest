@@ -101,7 +101,7 @@ def main():
         # Gitコマンドを実行して変更をプッシュ
         try:
             # ディレクトリパス
-            env_directory = "C:\Users\81907\Moduletest"
+            env_directory = 'C:\Users\81907\Moduletest'
             
             # SSHエージェントにSSHキーを追加
             subprocess.run(["ssh-add", "C:\\Users\\81907\\.ssh\\id_rsa"])
