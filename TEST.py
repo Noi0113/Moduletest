@@ -1,6 +1,17 @@
 import streamlit as st
 import paramiko
 
+import os
+
+# 秘密鍵ファイルの相対パス
+relative_path = '.ssh/id_rsa'
+
+# 秘密鍵ファイルの絶対パスを取得
+absolute_path = os.path.abspath(relative_path)
+
+st.write("絶対パス:", absolute_path)
+
+
 # 秘密鍵のパス
 PRIVATE_KEY_PATH = r"C:\Users\81907\.ssh\id_rsa"
 
