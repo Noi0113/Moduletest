@@ -23,10 +23,7 @@ user_input = st.text_input('Enter your information:')
 input_level = st.selectbox('級を入力してください(必須)',options=['A','B','C','D','E'])
 absent_matches = st.multiselect('欠席する試合を入力してください(複数選択可)', absent_options)
 
-# 休む試合は複数選択のため、リスト化
-absent_options = ['第1試合','第2試合','第3試合','第4試合']
-absent_matches = ['第2試合','第4試合']
-
+# 休む試合は複数選択のため、リスト化(バイナリ)
 absent_bin_list = []
 for i in range(len(absent_options)):
     if absent_options[i] in absent_matches:
