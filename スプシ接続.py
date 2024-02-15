@@ -23,8 +23,18 @@ user_input = st.text_input('Enter your information:')
 input_level = st.selectbox('級を入力してください(必須)',options=['A','B','C','D','E'])
 absent_matches = st.multiselect('欠席する試合を入力してください(複数選択可)', absent_options)
 
-#休む試合は複数選択のため、リスト化
-st.write(absent_matches)
+# 休む試合は複数選択のため、リスト化
+absent_options = ['第1試合','第2試合','第3試合','第4試合']
+absent_matches = ['第2試合','第4試合']
+
+absent_bin_list = []
+for i in range(len(absent_options)):
+    if absent_options[i] in absent_matches:
+        absent_bin_list.append(1) # 欠席するなら1を入れる
+    else:
+        absent_bin_list.append(0) # 出席するなら0を入れる
+
+st.write(absent_bin_list)
 
 #提出ボタンを押してデータを格納
 if st.button('Submit'):
@@ -33,8 +43,8 @@ if st.button('Submit'):
     last_row = len(sheet.col_values(column_number2)) + 1
     sheet.update_cell(last_row, column_number, user_input)
     sheet.update_cell(last_row, column_number2, input_level)
-    #sheet.update_cell(last_row, 3, absent_list[0])
-    #sheet.update_cell(last_row, 4, absent_list[0])
+    for i in range(len(absent_bin_list)): # 出席・欠席を0,1で格納(試合数の違いにも対応)
+        sheet.update_cell(last_row, 3+i, absent_bin_list[i])
     
     st.success('Data has been written to Google Sheets!')
 
